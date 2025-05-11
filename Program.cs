@@ -10,10 +10,10 @@ namespace Dis
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Servisleri ekle
+            
             builder.Services.AddControllersWithViews();
 
-            // DbContext'i ekle ve SQL Server bağlantısını ayarla
+           
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
@@ -32,7 +32,7 @@ namespace Dis
 
             var app = builder.Build();
 
-            // Ortam ayarları
+            // Ortam 
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");

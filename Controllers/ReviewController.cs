@@ -17,7 +17,7 @@ namespace Dis.Controllers
             _context = context;
         }
 
-        // GET: /Review/
+        
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,7 +27,7 @@ namespace Dis.Controllers
             return View(reviews);
         }
 
-        // POST: /Review/
+        
         [HttpPost]
         public IActionResult Index(Review model)
         {
