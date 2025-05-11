@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Patient>
+@{
+    ViewData["Title"] = "Index";
+
+    if(!User.Identity.IsAuthenticated || User.Identity.Name.ToLower() != "admin")
+    {
+        
+      <text>
+            <h2>Bu sayfaya erişim yetkiniz yok.</h2>
+            <p>Lütfen <a href="~/Auth/Login">giriş yapın</a> veya yetkili bir kullanıcı olun.</p>
+        </text>
+        return;
+    }
+}
+
+
+
+<h1>Hasta İşlemleri</h1>
+<a asp-action="AddPatient" asp-controller="Profile" class="btn btn-outline-primary">Hasta Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numara</th>
+            <th>Ad</th>            
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Phone</td>
+                <td>@item.Name</td>
+				<td>@item.Email</td>
+                <td><a class="btn btn-sm btn-outline-success" href="/Profile/EditPatient/@item.Id">Düzenle</a> <a onclick="return confirm('Emin misiniz?')" class="btn btn-sm btn-outline-danger" href="/Profile/DeletePatient/@item.Id">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

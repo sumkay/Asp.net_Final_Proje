@@ -1,0 +1,17 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "AddPatient";
+}
+
+<h1>Hasta Ekleme İşlemi</h1>
+
+
+<form asp-action="AddPatient" asp-controller="Profile" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+	<label asp-for="Email"></label>
+	<input asp-for="Email" />
+	<label asp-for="Phone"></label>
+	<input asp-for="Phone" />
+	<input type="submit" value="Kaydet" />
+</form>

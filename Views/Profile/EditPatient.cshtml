@@ -1,0 +1,18 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "EditPatient";
+}
+
+<h1>Edit Patient</h1>
+
+<form asp-action="EditPatient" asp-controller="Profile" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <label asp-for="Email"></label>   
+    <input asp-for="Email" />
+	<label asp-for="Phone"></label>
+	<input asp-for="Phone" />
+    <input type="submit" value="Kaydet" />
+</form>
+
+

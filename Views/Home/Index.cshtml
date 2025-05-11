@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Dişiniz Ağrıyorsa En iyi Noktadasınız.";
+}
+
+<!-- wwwroot klasöründen çağırmak için ~/ kullanıyoruz -->
+
+<header class="header fixed-top">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <a href="~/Home/Index" class="logo">Dis<span>Kliniği</span></a>
+            <nav class="nav">
+                <a href="~/Home/Index">Anasayfa</a>
+                <a href="~/Home/About">Hakkımızda</a>
+                <a href="~/Contact">İletişim</a>
+                <a href="~/Review">Görüşler</a>
+                @if(User.Identity.IsAuthenticated && User.Identity.Name.ToLower() == "admin")
+                {
+                    <a href="Profile">Hasta Yönetimi</a>
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="~/Auth/Logout">Çıkış</a>
+                }
+                else
+                {
+                    <a href="~/Auth/Login">Giriş Yap</a>
+                    <a href="~/Auth/Register">Kayıt Ol</a>
+                }
+            </nav>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </div>
+</header>
+
+<section class="home" id="home">
+    <div class="container">
+        <div class="row min-vh-100 align-items-center">
+            <div class="content text-center text-md-left">
+                <h3>Gülüşünüzü daha parlak hale getirelim.</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nam lacinia diam pharetra, fermentum elit nec, molestie orci.
+                    Nunc ullamcorper, odio et varius pretium, velit nisl laoreet ante, at fermentum augue risus vel neque. Quisque hendrerit tempus nisl, et tempus eros volutpat nec. Nulla auctor dignissim sollicitudin. Vestibulum tincidunt molestie turpis a finibus. Etiam ut risus nec purus fringilla congue.
+                    Maecenas vitae egestas est, quis tincidunt leo.
+                </p>
+                <a href="~/Contact" class="link-btn">Randevu Oluşturun</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="process">
+    <h1 class="heading">İŞLEMLERİMİZ</h1>
+    <div class="box-container container">
+        <div class="box">
+            <img src="~/images/process-1.png" alt="">
+            <h3>Kozmetik</h3>
+            <p>
+                Sed gravida pretium nisl, nec euismod lacus tincidunt at. Sed vel mi nunc. Duis sodales ante libero, convallis interdum sem posuere non.
+                Aenean gravida porta nisl, finibus pellentesque neque scelerisque vitae.
+                Duis consequat eu turpis tristique fermentum.
+            </p>
+        </div>
+        <div class="box">
+            <img src="~/images/process-2.png" alt="">
+            <h3>Pediatrik</h3>
+            <p>
+                Aliquam quis tellus non ex sodales vehicula. Nunc sagittis condimentum feugiat.
+                Nunc auctor lectus tempus metus varius, non rhoncus ex elementum. Suspendisse elit magna, posuere in imperdiet ac, ultrices vel velit. Donec eu quam sem. Nulla enim diam, scelerisque vitae rutrum id, lacinia eget leo.
+                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </p>
+        </div>
+        <div class="box">
+            <img src="~/images/process-3.png" alt="">
+            <h3>Cerrahi</h3>
+            <p>
+                Maecenas scelerisque ex tortor, ac scelerisque turpis tincidunt eget. Morbi molestie orci at dolor faucibus, ut varius ligula pharetra.
+                Sed ornare ipsum sed egestas cursus. Ut vestibulum pellentesque nunc. Quisque eget tincidunt est, ac suscipit dolor. Aliquam suscipit mi id massa condimentum congue.
+                Duis in tincidunt libero. Nam porttitor metus vel iaculis malesuada. Donec tempor dolor vel tortor cursus euismod.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="credit"> &copy;2024 <span>DişKliniği</span> Tüm haklar saklıdır. </div>
+</section>

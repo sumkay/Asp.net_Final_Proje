@@ -1,0 +1,102 @@
+﻿@model Dis.Models.Appointment
+
+<header class="header fixed-top">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <a href="~/Home/Index" class="logo">Dis<span>Kliniği</span></a>
+            <nav class="nav">
+                <a href="~/Home/Index">Anasayfa</a>
+                <a href="~/Home/About">Hakkımızda</a>
+                <a href="~/Contact">İletişim</a>
+                <a href="~/Review">Görüşler</a>
+               
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="~/Auth/Logout">Çıkış</a>
+                }
+            </nav>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </div>
+</header>
+
+<section class="contact" id="contact">
+    <h1 class="heading">Randevu Oluşturun</h1>
+
+    @* Hata mesajları  *@
+    @if (!ViewData.ModelState.IsValid)
+    {
+        var allErrors = ViewData.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).Distinct().ToList();
+        if (allErrors.Any())
+        {
+            <div style="margin: 10px auto 20px auto; display: table;text-align:center;width:60%" class="alert alert-danger">
+                @foreach (var error in allErrors)
+                {
+                    <div>@error</div>
+                }
+            </div>
+        }
+    }
+    @if (ViewBag.Message != null)
+    {
+        <div style="margin: 10px auto 20px auto; display: table;text-align:center;width:60%" class="alert alert-success">@ViewBag.Message</div>
+    }
+
+    <form asp-action="Index" asp-controller="Contact" method="post" autocomplete="off">
+        
+        <div>
+            <span>İsminiz:</span>
+            <input asp-for="Patient.Name" class="box" required />
+        </div>
+        <div>
+            <span>E-posta Adresinizi Giriniz:</span>
+            <input asp-for="Patient.Email" class="box" type="email" required />
+        </div>
+        <div>
+            <span>Numaranızı Giriniz:</span>
+            <input asp-for="Patient.Phone" class="box" required />
+        </div>
+
+        
+        <div>
+            <span>Randevu Tarihi Seçiniz :</span>
+            <input asp-for="AppointmentDate" type="datetime-local" class="box" required />
+        </div>
+
+        <div>
+            <input type="submit" value="Randevu Oluştur" class="link-btn" />
+        </div>
+    </form>
+</section>
+
+<section class="footer">
+    <div class="box-container container">
+        <div class="box">
+            <i class="fas fa-phone"></i>
+            <h3>Telefon Numarası</h3>
+            <p>444 444 444</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Adresimiz</h3>
+            <p>
+                <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x14d34e2b85382e63:0x114de76c7167f871?sa=X&ved=1t:8290&ictx=111" target="_blank">
+                    Kızılay, Atatürk Blv, AVM, 06442 Ankara
+                </a>
+            </p>
+        </div>
+        <div class="box">
+            <i class="fas fa-clock"></i>
+            <h3>Çalışma Saatlerimiz</h3>
+            <p>Her Gün 09.00 ve 16.00 Arasında</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-envelope"></i>
+            <h3>E-posta Adresimiz</h3>
+            <p>dişkliniği_2024@example.com</p>
+        </div>
+    </div>
+    <div class="credit">
+        &copy;2024 <span>DişKliniği</span> Tüm haklar saklıdır.
+    </div>
+</section>

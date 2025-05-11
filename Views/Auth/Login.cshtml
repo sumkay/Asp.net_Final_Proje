@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<header class="header fixed-top">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <a asp-controller="Home" asp-action="Index" class="logo">Dis<span>Kliniği</span></a>
+            <nav class="nav">
+                <a href="~/Home/Index">Anasayfa</a>
+                <a href="~/Home/About">Hakkımızda</a>
+                <a href="~/Contact">İletişim</a>
+                <a href="~/Review">Görüşler</a>
+            </nav>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </div>
+</header>
+
+<section class="auth-section" id="login">
+    <div class="container">
+        <div class="form-box">
+            <h2 style="text-align:center; color:#0583d2; margin-bottom:18px;">Giriş Yap</h2>
+            <form asp-action="Login" method="post" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı</label>
+                    <input type="text" name="username" class="box" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" name="password" class="box" required />
+                </div>
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Error</div>
+                }
+                <button type="submit" class="btn">Giriş Yap</button>
+            </form>
+            <p style="text-align:center; margin-top:15px;">Hesabınız yok mu? <a asp-action="Register" style="color:#0583d2;">Kayıt Ol</a></p>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="credit">
+        <div class="credit"> &copy;2024 <span>DişKliniği</span> Tüm haklar saklıdır. </div>
+    </div>
+</section>

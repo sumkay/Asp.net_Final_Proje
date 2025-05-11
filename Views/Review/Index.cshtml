@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Dis.Models.Review>
+
+@{
+    ViewData["Title"] = "Görüşler";
+    // var imageList = new List<string>
+    // {
+    //     Url.Content("~/images/pic-1.png"),
+    //     Url.Content("~/images/pic-2.png"),
+    //     Url.Content("~/images/pic-3.png")
+    // };
+    // var rnd = new Random();
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dişiniz Ağrıyorsa En iyi Noktadasınız.</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="icon" type="image/png" href="~/images/favicon.png" />
+</head>
+<body>
+    <header class="header fixed-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <a href="~/Home/Index" class="logo">Dis<span>Kliniği</span></a>
+                <nav class="nav">
+                    <a href="~/Home/Index">Anasayfa</a>
+                    <a href="~/Home/About">Hakkımızda</a>
+                    <a href="~/Contact">İletişim</a>
+                    <a href="~/Review">Görüşler</a>
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="~/Auth/Logout">Çıkış</a>
+                    }
+                </nav>
+                <a href="~/Contact" class="link-btn">Randevu Oluşturun</a>
+                <div id="menu-btn" class="fas fa-bars"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="reviews" id="reviews" style="margin-top: auto;">
+        <h1 class="heading"> Hastalarımız </h1>
+        <div class="box-container container">
+            @foreach (var item in Model)
+            {
+                @* var img = imageList[rnd.Next(imageList.Count)]; *@
+                    <div class="box">
+                       @*  <img src="@img" alt="Profil Resmi"> *@
+                        <p>@item.Comment</p>
+                        <div class="stars">
+                        @for (int i = 0; i < item.Rating; i++)
+                        {
+                                    <i class="fas fa-star"></i>
+                        }
+                        @for (int i = item.Rating; i < 5; i++)
+                        {
+                                    <i class="far fa-star"></i>
+                        }
+                        </div>
+                        <h3>@item.Name</h3>
+                        <span>@item.Profession</span>
+                    </div>
+            }
+        </div>
+    </section>
+
+    <div class="form-container">
+        <h2>Görüş Ekle</h2>
+        <form asp-action="Index" method="post">
+            <input type="text" class="box" name="Name" placeholder="Adınızı Girin" required />
+            <input type="text" class="box" name="Profession" placeholder="Mesleğinizi Girin" required />
+            <textarea class="box" name="Comment" placeholder="Görüşünüzü Yazın" rows="4" required></textarea>
+            <div class="rating">
+                @for (int i = 5; i >= 1; i--)
+                {
+                        <label>
+                            <input type="radio" name="Rating" value="@i" required />
+                            <i class="fas fa-star"></i>
+                        </label>
+                }
+            </div>
+            <button type="submit" class="btn">Görüş Ekle</button>
+        </form>
+    </div>
+
+    <section class="footer">
+        <div class="credit"> &copy;2024 <span>DişKliniği</span> Tüm haklar saklıdır. </div>
+    </section>
+</body>
+</html>

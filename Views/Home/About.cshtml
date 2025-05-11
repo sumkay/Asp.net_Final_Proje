@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+<header class="header fixed-top">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <a asp-controller="Home" asp-action="Index" class="logo">Dis<span>Kliniği</span></a>
+            <nav class="nav">
+                <a href="~/Home/Index">Anasayfa</a>
+                <a href="~/Home/About">Hakkımızda</a>
+                <a href="~/Contact">İletişim</a>
+                <a href="~/Review">Görüşler</a>
+                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="~/Auth/Logout">Çıkış</a>
+                }
+                else
+                {
+                    <a href="~/Auth/Login">Giriş Yap</a>
+                    <a href="~/Auth/Register">Kayıt Ol</a>
+                }
+            </nav>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </div>
+</header>
+
+<section class="about" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 image">
+                <img src="~/images/about-img.jpg" class="w-100 mb-5 mb-md-0" alt="">
+            </div>
+            <div class="col-md-6 content">
+                <span>Hakkımızda</span>
+                <h3>Genel Anlamda Biz.</h3>
+                <p>
+                    Morbi vestibulum est vel tellus ultricies, quis ullamcorper diam bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    Praesent ultricies eros finibus ligula euismod congue at nec diam. Quisque convallis dignissim metus, in lobortis libero mollis at. Nunc commodo commodo turpis quis molestie.
+                    Sed dolor odio, tristique ut egestas ut, pharetra ut elit. Maecenas nisi leo, finibus sit amet felis eu, consectetur dictum massa.
+                    Ut et dignissim mauris. Curabitur libero odio, efficitur id pharetra fringilla, sodales a augue.
+                </p>
+                <a asp-controller="Contact" asp-action="Index" class="link-btn">Randevu Oluşturun</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <h1 class="heading">Hizmetlerimiz</h1>
+    <div class="box-container container">
+        <div class="box">
+            <img src="~/images/icon-1.svg" alt="">
+            <h3>Dolgu ve İmplant Uzmanlığı</h3>
+        </div>
+        <div class="box">
+            <img src="~/images/icon-2.svg" alt="">
+            <h3>Kozmetik Dişçilik</h3>
+        </div>
+        <div class="box">
+            <img src="~/images/icon-3.svg" alt="">
+            <h3>Ağız Temizliği Uzmanlığı</h3>
+        </div>
+        <div class="box">
+            <img src="~/images/icon-4.svg" alt="">
+            <h3>Kanal Tedavisi Uzmanlığı</h3>
+        </div>
+        <div class="box">
+            <img src="~/images/icon-5.svg" alt="">
+            <h3>Dis Sağlığı Danışmanlığı</h3>
+        </div>
+        <div class="box">
+            <img src="~/images/icon-6.svg" alt="">
+            <h3>Dis Temizleme Uzmanlığı</h3>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="credit">
+        <div class="credit"> &copy;2024 <span>DişKliniği</span> Tüm haklar saklıdır. </div>
+    </div>
+</section>
